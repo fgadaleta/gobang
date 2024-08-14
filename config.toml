@@ -1,0 +1,7 @@
+[[conn]]
+type = "postgres"
+user = "postgres"
+host = "localhost"
+port = 5555
+password = "password"
+database = "postgres"

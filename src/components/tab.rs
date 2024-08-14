@@ -18,6 +18,7 @@ pub enum Tab {
     Records,
     Properties,
     Sql,
+    Admin,
 }
 
 impl std::fmt::Display for Tab {
@@ -48,6 +49,8 @@ impl TabComponent {
             command::tab_records(&self.key_config).name,
             command::tab_properties(&self.key_config).name,
             command::tab_sql_editor(&self.key_config).name,
+            command::tab_admin(&self.key_config).name,
+
         ]
     }
 }
@@ -83,6 +86,11 @@ impl Component for TabComponent {
             self.selected_tab = Tab::Properties;
             return Ok(EventState::Consumed);
         }
+        else if key == self.key_config.tab_operations {
+            self.selected_tab = Tab::Admin;
+            return Ok(EventState::Consumed);
+        }
+
         Ok(EventState::NotConsumed)
     }
 }

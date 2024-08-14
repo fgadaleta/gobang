@@ -132,6 +132,34 @@ pub fn tab_indexes(key: &KeyConfig) -> CommandText {
     CommandText::new(format!("Indexes [{}]", key.tab_indexes), CMD_GROUP_TABLE)
 }
 
+
+pub fn tab_new_user(key: &KeyConfig) -> CommandText {
+    CommandText::new(format!("New User [{}]", key.tab_columns), CMD_GROUP_TABLE)
+}
+
+pub fn tab_del_user(key: &KeyConfig) -> CommandText {
+    CommandText::new(
+        format!("Delete User [{}]", key.tab_constraints),
+        CMD_GROUP_TABLE,
+    )
+}
+
+pub fn tab_new_graph(key: &KeyConfig) -> CommandText {
+    CommandText::new(
+        format!("New Graph [{}]", key.tab_foreign_keys),
+        CMD_GROUP_TABLE,
+    )
+}
+
+pub fn tab_del_graph(key: &KeyConfig) -> CommandText {
+    CommandText::new(format!("Delete Graph [{}]", key.tab_indexes), CMD_GROUP_TABLE)
+}
+
+pub fn tab_admin(key: &KeyConfig) -> CommandText {
+    CommandText::new(format!("Intrepid Ops [{}]", key.tab_operations), CMD_GROUP_TABLE)
+}
+
+
 pub fn tab_sql_editor(key: &KeyConfig) -> CommandText {
     CommandText::new(format!("SQL [{}]", key.tab_sql_editor), CMD_GROUP_TABLE)
 }

@@ -112,6 +112,7 @@ pub struct KeyConfig {
     pub tab_indexes: Key,
     pub tab_sql_editor: Key,
     pub tab_properties: Key,
+    pub tab_operations: Key,
     pub extend_or_shorten_widget_width_to_right: Key,
     pub extend_or_shorten_widget_width_to_left: Key,
 }
@@ -151,6 +152,7 @@ impl Default for KeyConfig {
             tab_constraints: Key::Char('5'),
             tab_foreign_keys: Key::Char('6'),
             tab_indexes: Key::Char('7'),
+            tab_operations: Key::Char('9'),
             extend_or_shorten_widget_width_to_right: Key::Char('>'),
             extend_or_shorten_widget_width_to_left: Key::Char('<'),
         }

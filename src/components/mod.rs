@@ -14,6 +14,7 @@ pub mod table_filter;
 pub mod table_status;
 pub mod table_value;
 pub mod utils;
+pub mod operations;
 
 #[cfg(debug_assertions)]
 pub mod debug;
@@ -26,6 +27,7 @@ pub use databases::DatabasesComponent;
 pub use error::ErrorComponent;
 pub use help::HelpComponent;
 pub use properties::PropertiesComponent;
+pub use operations::OperationsComponent;
 pub use record_table::RecordTableComponent;
 pub use sql_editor::SqlEditorComponent;
 pub use tab::TabComponent;

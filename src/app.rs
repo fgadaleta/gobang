@@ -1,6 +1,6 @@
 use crate::clipboard::copy_to_clipboard;
 use crate::components::{
-    CommandInfo, Component as _, DrawableComponent as _, EventState, StatefulDrawableComponent,
+    CommandInfo, Component as _, DrawableComponent as _, EventState, OperationsComponent, StatefulDrawableComponent
 };
 use crate::database::{MySqlPool, Pool, PostgresPool, SqlitePool, RECORDS_LIMIT_PER_PAGE};
 use crate::event::Key;
@@ -27,6 +27,7 @@ pub struct App {
     record_table: RecordTableComponent,
     properties: PropertiesComponent,
     sql_editor: SqlEditorComponent,
+    operations: OperationsComponent,
     focus: Focus,
     tab: TabComponent,
     help: HelpComponent,
@@ -46,6 +47,7 @@ impl App {
             record_table: RecordTableComponent::new(config.key_config.clone()),
             properties: PropertiesComponent::new(config.key_config.clone()),
             sql_editor: SqlEditorComponent::new(config.key_config.clone()),
+            operations: OperationsComponent::new(config.key_config.clone()),
             tab: TabComponent::new(config.key_config.clone()),
             help: HelpComponent::new(config.key_config.clone()),
             databases: DatabasesComponent::new(config.key_config.clone()),
@@ -101,6 +103,11 @@ impl App {
                 self.properties
                     .draw(f, right_chunks[1], matches!(self.focus, Focus::Table))?;
             }
+            Tab::Admin => {
+                self.operations
+                .draw(f, right_chunks[1], matches!(self.focus, Focus::Table))?;
+            }
+
         }
         self.error.draw(f, Rect::default(), false)?;
         self.help.draw(f, Rect::default(), false)?;
@@ -310,6 +317,10 @@ impl App {
                         if self.properties.event(key)?.is_consumed() {
                             return Ok(EventState::Consumed);
                         };
+                    }
+
+                    Tab::Admin => {
+
                     }
                 };
             }
